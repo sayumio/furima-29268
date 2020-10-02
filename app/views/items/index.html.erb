@@ -126,7 +126,7 @@
     <%= link_to '新規投稿商品', "/items/new" , class: "subtitle" %>
     <ul class='item-lists'>
 
-      <% if @items != nil %>
+      <% if @items.present? %>
         <% @items.each do |item| %>
           <li class='list'>
             <%= link_to item_path(item.id) do %>
@@ -134,7 +134,7 @@
                 <%= image_tag item.image, class: "item-img" %>
 
 
-                <% if item.buyer != nil %>
+                <% if item.present? %>
                   <div class='sold-out'>
                     <span>Sold Out!!</span>
                   </div>
