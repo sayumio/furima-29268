@@ -34,24 +34,26 @@ ActiveRecord::Schema.define(version: 2020_09_29_102722) do
   end
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "post_code", null: false
+    t.string "post_code", default: "", null: false
     t.integer "prefectures_id", null: false
-    t.string "city", null: false
-    t.string "block", null: false
-    t.string "building"
+    t.string "city", default: "", null: false
+    t.string "block", default: "", null: false
+    t.string "building", default: ""
     t.string "phone_num", null: false
-    t.bigint "buyer_id"
+    t.bigint "buyer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["buyer_id"], name: "index_addresses_on_buyer_id"
   end
 
   create_table "buyers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.bigint "item_id"
+    t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_buyers_on_item_id"
+    t.index ["price"], name: "index_buyers_on_price"
     t.index ["user_id"], name: "index_buyers_on_user_id"
   end
 

@@ -1,10 +1,20 @@
-function itemprice() {
-  const price = document.getElementById("item-price");
-   price.addEventListener("input", (e) => {
-    let add_tax_price = document.getElementById("add-tax-price");
-    let profit = document.getElementById("profit");
-    add_tax_price.innerHTML = parseInt(e.target.value * 0.1);
-    profit.innerHTML = parseInt(e.target.value - add_tax_price.innerHTML);
+function calculate() {
+  const itemPrice = document.getElementById("item-price");
+  const addTaxPrice = document.getElementById("add-tax-price");
+  const profit = document.getElementById("profit");
+
+
+  itemPrice.addEventListener('input', function() {
+    let formData = itemPrice.value;
+    let fee = Math.floor(formData * 0.1);
+    let sales = formData - fee;
+    fee = String(fee).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+    addTaxPrice.innerHTML = fee;
+
+    sales = String(sales).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+    profit.innerHTML = sales;
+
   });
-};
-window.addEventListener("load", itemprice);
+}
+
+window.addEventListener('load', calculate)

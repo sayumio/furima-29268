@@ -11,9 +11,17 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :image
-    validates :name, length: { maximum: 40 }
-    validates :comment, length: { maximum: 1000 }
-    validates :price, format: { with: /\A[0-9]+\z/ }
+    validates :name      , length: { maximum: 40 }
+    validates :comment   , length: { maximum: 1000 }
+    validates :category_id
+    validates :status_id
+    validates :charges_id
+    validates :area_id
+    validates :days_id
+    validates :price     , format: { with: /\A[0-9]+\z/ }
+  end
+
+  with_options numericality: { other_than: 1, message: '選択してください' } do
     validates :category_id
     validates :status_id
     validates :charges_id
@@ -21,14 +29,6 @@ class Item < ApplicationRecord
     validates :days_id
   end
 
-  with_options numericality: { other_than: 1 } do
-    validates :category_id
-    validates :status_id
-    validates :charges_id
-    validates :area_id
-    validates :days_id
-  end
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'は¥300〜9,999,999で入力してください' }
 
-  validates :price,
-            numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 end
