@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_one :buyer
 
   # 空白は不可
-  validates :nickname, :sei, :mai, :kanasei, :kanamei, :birthday, presence: true
+  validates :nickname, :sei, :mei, :kanasei, :kanamei, :birthday, presence: true
   # 全角ひらがな、全角カタカナ、漢字 のみ許可
   validates :sei, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: '全角文字を使用してください' }
   validates :mei, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: '全角文字を使用してください' }
