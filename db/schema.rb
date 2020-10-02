@@ -49,11 +49,9 @@ ActiveRecord::Schema.define(version: 2020_09_29_102722) do
   create_table "buyers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "item_id"
-    t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_buyers_on_item_id"
-    t.index ["price"], name: "index_buyers_on_price"
     t.index ["user_id"], name: "index_buyers_on_user_id"
   end
 

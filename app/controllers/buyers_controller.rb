@@ -28,7 +28,7 @@ class BuyersController < ApplicationController
   end
 
   def buyer_params
-    params.permit(:post_code, :prefectures_id, :city, :block, :building, :phone_num, :token, :price).merge(user_id: current_user.id)
+    params.permit(:post_code, :prefectures_id, :city, :block, :building, :phone_num, :token, :item_id).merge(user_id: current_user.id)
   end
 
   def pay_item
